@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import logo from "../assets/react.svg";
-import iconDown from "../assets/react.svg";
-import iconUp from "../assets/react.svg";
-import elipsis from "../assets/react.svg";
-
+import { FaChevronUp } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
+import { FaEllipsisV } from "react-icons/fa";
+import ElipsisMenu from '../components/ElipsisMenu.jsx'
 import boardsSlice from "../redux/boardsSlice";
 import { useDispatch, useSelector } from "react-redux";
+import HeaderDropDown from "./HeaderDropDown.jsx";
+import AddEditBoardModal from "../modals/AddEditBoardModal.jsx";
+import DeleteModal from "../modals/DeleteModal.jsx";
+import AddEditTaskModal from "../modals/AddEditTaskModal.jsx";
 
 function Header({ setIsBoardModalOpen, isBoardModalOpen }) {
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -15,7 +19,7 @@ function Header({ setIsBoardModalOpen, isBoardModalOpen }) {
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
   const dispatch = useDispatch();
-  
+
   const boards = useSelector((state) => state.boards);
   const board = boards.find((board) => board.isActive);
 
@@ -57,12 +61,9 @@ function Header({ setIsBoardModalOpen, isBoardModalOpen }) {
             <h3 className=" truncate max-w-[200px] md:text-2xl text-xl font-bold md:ml-20 font-sans  ">
               {board?.name}
             </h3>
-            <img
-              src={openDropdown ? iconUp : iconDown}
-              alt=" dropdown icon"
-              className=" w-3 ml-2 md:hidden"
-              onClick={onDropdownClick}
-            />
+            <div onClick={onDropdownClick} className="md:hidden cursor-pointer ml-2">
+              {openDropdown ? <FaChevronUp className="w-4 h-4" /> : <FaChevronDown className="w-4 h-4" />}
+            </div>
           </div>
         </div>
 
@@ -86,16 +87,16 @@ function Header({ setIsBoardModalOpen, isBoardModalOpen }) {
             +
           </button>
 
-          <img
+          <div
             onClick={() => {
               setBoardType("edit");
               setOpenDropdown(false)
               setIsElipsisMenuOpen((prevState) => !prevState);
             }}
-            src={elipsis}
-            alt="elipsis"
-            className=" cursor-pointer h-6"
-          />
+            className="cursor-pointer"
+          >
+            <FaEllipsisV className="h-6 w-6" />
+          </div>
           {isElipsisMenuOpen && (
             <ElipsisMenu
               type="Boards"
