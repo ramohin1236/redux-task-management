@@ -63,7 +63,7 @@ function HeaderDropDown({ setOpenDropdown, setIsBoardModalOpen }) {
           }}
           className=" flex items-baseline space-x-2  text-[#635fc7] px-5 py-4  ">
             <img src={boardIcon} className="   filter-white  h-4 " />
-            <p className=" text-lg font-bold  ">Create New Board </p>
+            <p className=" text-lg font-bold  ">Create New Task </p>
           </div>
 
           <div className=" mx-2  p-4  space-x-2 bg-slate-100 dark:bg-[#20212c] flex justify-center items-center rounded-lg">

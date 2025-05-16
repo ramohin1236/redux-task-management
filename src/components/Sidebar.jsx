@@ -5,12 +5,14 @@ import boardIcon from "../assets/react.svg";
 import useDarkMode from "../hooks/useDarkMode";
 import darkIcon from "../assets/react.svg";
 import lightIcon from "../assets/react.svg";
-
+import { MdRocketLaunch } from "react-icons/md";
+import { MdHideSource } from "react-icons/md";
 import showSidebarIcon from "../assets/react.svg";
 import hideSidebarIcon from "../assets/react.svg";
-
+import { BiShow } from "react-icons/bi";
 import boardsSlice from "../redux/boardsSlice";
 import AddEditBoardModal from "../modals/AddEditBoardModal";
+import { MdCreateNewFolder } from "react-icons/md";
 
 function Sidebar({ isSideBarOpen, setIsSideBarOpen }) {
   const dispatch = useDispatch();
@@ -53,7 +55,7 @@ function Sidebar({ isSideBarOpen, setIsSideBarOpen }) {
                 <div>
                   {boards.map((board, index) => (
                     <div
-                      className={` flex items-baseline space-x-2 px-5 mr-8 rounded-r-full duration-500 ease-in-out py-4 cursor-pointer hover:bg-[#635fc71a] hover:text-[#635fc7] dark:hover:bg-white dark:hover:text-[#635fc7] dark:text-white  ${
+                      className={` flex items-center space-x-2 px-5 mr-8 rounded-r-full duration-500 ease-in-out py-4 cursor-pointer hover:bg-[#635fc71a] hover:text-[#635fc7] dark:hover:bg-white dark:hover:text-[#635fc7] dark:text-white  ${
                         board.isActive &&
                         " bg-[#635fc7] rounded-r-full text-white mr-8 "
                       } `}
@@ -62,23 +64,24 @@ function Sidebar({ isSideBarOpen, setIsSideBarOpen }) {
                         dispatch(boardsSlice.actions.setBoardActive({ index }));
                       }}
                     >
-                      <img src={boardIcon} className="  filter-white  h-4 " />{" "}
+                      <MdRocketLaunch className="text-xl text-gray-600 dark:text-white" />
                       <p className=" text-lg font-bold ">{board.name}</p>
                     </div>
                   ))}
 
                   <div
-                    className=" flex  items-baseline space-x-2  mr-8 rounded-r-full duration-500 ease-in-out cursor-pointer text-[#635fc7] px-5 py-4 hover:bg-[#635fc71a] hover:text-[#635fc7] dark:hover:bg-white  "
+                    className=" flex items-center space-x-2  mr-8 rounded-r-full duration-500 ease-in-out cursor-pointer text-[#635fc7] px-5 py-4 hover:bg-[#635fc71a] hover:text-[#635fc7] dark:hover:bg-white  "
                     onClick={() => {
                       setIsBoardModalOpen(true);
                     }}
                   >
-                    <img src={boardIcon} className="   filter-white  h-4 " />
-                    <p className=" text-lg font-bold  ">Create New Board </p>
+
+                     <MdCreateNewFolder className="text-xl text-gray-600 dark:text-white" />
+                    <p className=" text-lg font-bold  ">Create New Task </p>
                   </div>
                 </div>
 
-                <div className=" mx-2  p-4 relative space-x-2 bg-slate-100 dark:bg-[#20212c] flex justify-center items-center rounded-lg">
+                {/* <div className=" mx-2  p-4 relative space-x-2 bg-slate-100 dark:bg-[#20212c] flex justify-center items-center rounded-lg">
                   <img src={lightIcon} alt="sun indicating light mode" />
 
                   <Switch
@@ -96,7 +99,7 @@ function Sidebar({ isSideBarOpen, setIsSideBarOpen }) {
                   </Switch>
 
                   <img src={darkIcon} alt="moon indicating dark mode" />
-                </div>
+                </div> */}
               </div>
             </div>
           )}
@@ -107,16 +110,13 @@ function Sidebar({ isSideBarOpen, setIsSideBarOpen }) {
               onClick={() => toggleSidebar()}
               className=" flex  items-center mt-2  absolute bottom-16  text-lg font-bold  rounded-r-full hover:text-[#635FC7] cursor-pointer mr-6 mb-8 px-8 py-4 hover:bg-[#635fc71a] dark:hover:bg-white  space-x-2 justify-center  my-4 text-gray-500 "
             >
-              <img
-                className=" min-w-[20px]"
-                src={hideSidebarIcon}
-                alt=" side bar show/hide"
-              />
+          
+              <MdHideSource  className="text-xl text-gray-600 dark:text-white" />
               {isSideBarOpen && <p> Hide Sidebar </p>}
             </div>
           ) : (
             <div className=" absolute p-5  " onClick={() => toggleSidebar()}>
-              <img src={showSidebarIcon} alt="showSidebarIcon" />
+              <BiShow  className="text-xl text-gray-600 dark:text-white" />
             </div>
           )}
         </div>

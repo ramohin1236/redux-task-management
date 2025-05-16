@@ -78,14 +78,14 @@ function AddEditBoardModal({ setIsBoardModalOpen, type , }) {
        shadow-md shadow-[#364e7e1a] max-w-md mx-auto my-auto w-full px-8  py-8 rounded-xl"
       >
         <h3 className=" text-lg ">
-          {type === "edit" ? "Edit" : "Add New"} Board
+          {type === "edit" ? "Edit" : "Add New"} Task
         </h3>
 
         {/* Task Name */}
 
         <div className="mt-8 flex flex-col space-y-1">
           <label className="  text-sm dark:text-white text-gray-500">
-            Board Name
+            Task Name
           </label>
           <input
             className=" bg-transparent  px-4 py-2 rounded-md text-sm  border-[0.5px] border-gray-600 focus:outline-[#635fc7] outline-1  ring-0  "
@@ -100,7 +100,7 @@ function AddEditBoardModal({ setIsBoardModalOpen, type , }) {
 
         <div className="mt-8 flex flex-col space-y-3">
           <label className=" text-sm dark:text-white text-gray-500">
-            Board Columns
+            Task Columns
           </label>
 
           {newColumns.map((column, index) => (
@@ -141,7 +141,7 @@ function AddEditBoardModal({ setIsBoardModalOpen, type , }) {
               }}
               className=" w-full items-center hover:opacity-70 dark:text-white dark:bg-[#635fc7] mt-8 relative  text-white bg-[#635fc7] py-2 rounded-full"
             >
-              {type === "add" ? "Create New Board" : "Save Changes"}
+              {type === "add" ? "Create New Task" : "Save Changes"}
             </button>
           </div>
         </div>
